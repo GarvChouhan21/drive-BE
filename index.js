@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./app/config/db');
+const router = require('./app/routes/user.routes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send('Uber API is running and connected to MongoDB');
 });
+app.use('/api/users',router)
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
